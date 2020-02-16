@@ -15,4 +15,9 @@ class BaseEntityRepository
         $this->entityManager = $registry->getManagerForClass($entityClass);
         $this->repository = $this->entityManager->getRepository($entityClass);
     }
+
+    protected function persistDatabase($entity): void {
+        $this->entityManager->persist($entity);
+        $this->entityManager->flush();
+    }
 }

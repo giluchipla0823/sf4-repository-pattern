@@ -25,4 +25,16 @@ class BookService
     public function findOneByTitle(string $title): ?Book{
         return $this->repository->findOneByTitle($title);
     }
+
+    public function create(Book $book): void {
+        $this->repository->create($book);
+    }
+
+    public function update(Book $book): void {
+        $this->repository->update($book);
+    }
+
+    public function remove(Book $book): void {
+        $this->repository->remove($book);
+    }
 }

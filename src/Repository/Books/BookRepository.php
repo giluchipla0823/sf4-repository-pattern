@@ -14,8 +14,6 @@ class BookRepository extends BaseEntityRepository implements BookRepositoryInter
     }
 
     public function all(): array {
-
-
         return $this->repository->findAll();
     }
 
@@ -26,5 +24,24 @@ class BookRepository extends BaseEntityRepository implements BookRepositoryInter
 
     public function findOneByTitle(string $title): ?Book{
         return $this->repository->findOneBy(['title' => $title]);
+    }
+
+    public function create(Book $book): void {
+        $book->setCreatedAt(new \DateTime('now'));
+
+        $this->persistDatabase($book);
+    }
+
+    public function update(Book $book): void {
+        $book->setUpdatedAt(new \DateTime('now'));
+
+        $this->entityManager->flush();
+    }
+
+    public function remove(Book $book): void
+    {
+        $em = $this->entityManager;
+        $em->remove($book);
+        $em->flush();
     }
 }

@@ -1,6 +1,7 @@
 App\Entity\Books\Book:
     type: entity
     table: books
+    schema: db_api_books
 #    repositoryClass: App\Repository\Books\BookRepository
     id:
         id:
@@ -47,4 +48,16 @@ App\Entity\Books\Book:
             options:
                 default: CURRENT_TIMESTAMP
             column: updated_at
+    manyToOne:
+        author:
+            #targetEntity: Author
+            targetEntity: App\Model\AuthorInterface
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                author_id:
+                    referencedColumnName: id
+            orphanRemoval: false
     lifecycleCallbacks: {  }

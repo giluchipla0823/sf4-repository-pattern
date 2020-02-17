@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Books\Book;
 use App\Form\Books\BookType;
+use App\Services\Authors\AuthorService;
 use App\Services\Books\BookService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,6 +30,9 @@ class BooksController extends AbstractController
     public function index(): Response
     {
         $books = $this->bookService->all();
+
+//        dump($books[0]->getAuthor()->getName());
+//        exit();
 
         return $this->render('books/index.html.twig', [
             'books' => $books,

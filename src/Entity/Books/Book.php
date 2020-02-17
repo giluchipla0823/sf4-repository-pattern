@@ -2,6 +2,8 @@
 
 namespace App\Entity\Books;
 
+// use App\Entity\Authors\Author;
+
 class Book
 {
     private $id;
@@ -17,6 +19,8 @@ class Book
     private $createdAt;
 
     private $updatedAt;
+
+    private $author;
 
     public function getId(): ?int
     {
@@ -91,6 +95,18 @@ class Book
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?Author
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?Author $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }

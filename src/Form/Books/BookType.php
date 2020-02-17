@@ -2,11 +2,16 @@
 
 namespace App\Form\Books;
 
-use App\Entity\Books\Book;
+use App\Entity\Books\{
+    Book,
+    Author
+};
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\{
+    SubmitType,
+    TextType
+};
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -46,10 +51,12 @@ class BookType extends AbstractType
                 ]
             )
             ->add(
-                'authorId',
-                NumberType::class,
+                'author',
+                EntityType::class,
                 [
-                    'label' => 'Author',
+                    'label' => 'Seleccionar autor',
+                    'placeholder' => 'Seleccionar',
+                    'class' => Author::class,
                     'attr' => [
                         'required' => TRUE
                     ]

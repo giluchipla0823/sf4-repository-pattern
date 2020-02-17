@@ -2,19 +2,26 @@
 
 namespace App\Entity\Authors;
 
-class Author
+use App\Model\AuthorInterface;
+
+class Author implements AuthorInterface
 {
-    private $id;
+    protected $id;
 
-    private $name;
+    protected $name;
 
-    private $gender;
+    protected $gender;
 
-    private $country;
+    protected $country;
 
-    private $createdAt;
+    protected $createdAt;
 
-    private $updatedAt;
+    protected $updatedAt;
+
+    public function __toString(): string
+    {
+        return $this->name;
+    }
 
     public function getId(): ?int
     {

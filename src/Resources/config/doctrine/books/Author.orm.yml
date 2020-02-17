@@ -1,4 +1,4 @@
-App\Entity\Authors\Author:
+App\Entity\Books\Author:
     type: entity
     table: db_api_authors.authors
     id:

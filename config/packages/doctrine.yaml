@@ -27,6 +27,8 @@ doctrine:
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
         default_entity_manager: books
+        resolve_target_entities:
+            App\Model\AuthorInterface: App\Entity\Books\Author
         entity_managers:
             books:
                 connection: books
